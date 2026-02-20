@@ -67,7 +67,7 @@
 ### ROS 1 — `ros1_ws/`
 
 ```
-catkin_ws/
+ros1_ws/
 └── src/
     ├── CMakeLists.txt                         # catkin toplevel
     └── drone_mission/
