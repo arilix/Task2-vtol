@@ -442,7 +442,7 @@ $$d = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2}$$
 
 ## Lisensi
 
-MIT License — Lihat kode sumber untuk detail.
+BSD 2-Clause License — Lihat file [LICENSE](LICENSE) untuk detail.
 
 ---
 
