@@ -64,7 +64,7 @@
 
 ## Struktur Direktori
 
-### ROS 1 — `catkin_ws/`
+### ROS 1 — `ros1_ws/`
 
 ```
 catkin_ws/
@@ -151,7 +151,7 @@ sudo /opt/ros/noetic/lib/mavros/install_geographiclib_datasets.sh
 source /opt/ros/noetic/setup.bash
 
 # Masuk ke workspace catkin
-cd ~/tutorial/catkin_ws
+cd ~/tutorial/ros1_ws
 
 # Build semua package dalam workspace menggunakan catkin_make
 # catkin_make akan mengompilasi source C++ dan menyiapkan script Python
@@ -199,7 +199,7 @@ sim_vehicle.py -v ArduCopter --console --map
 
 ```bash
 # Terminal 2 — Source workspace
-source ~/tutorial/catkin_ws/devel/setup.bash
+source ~/tutorial/ros1_ws/devel/setup.bash
 
 # Misi hover (Python)
 roslaunch drone_mission mavros_control.launch mission_type:=hover
