@@ -1,0 +1,46 @@
+<launch>
+    <!-- 
+        MAVROS Control Launch File
+        Menjalankan MAVROS dan node mavros_control untuk kontrol drone.
+        
+        Tipe misi (mission_type):
+          - hover   : takeoff, hover selama N detik, land
+          - square  : takeoff, terbang pola persegi, land
+          - circle  : takeoff, terbang pola lingkaran, land
+        
+        Contoh:
+          roslaunch drone_mission mavros_control.launch
+          roslaunch drone_mission mavros_control.launch mission_type:=square
+          roslaunch drone_mission mavros_control.launch mission_type:=circle circle_radius:=3.0
+    -->
+
+    <!-- ============= Arguments ============= -->
+    <arg name="fcu_url"         default="tcp://127.0.0.1:5762" />
+    <arg name="gcs_url"         default="" />
+    <arg name="mission_type"    default="hover" />
+    <arg name="altitude"        default="2.0" />
+    <arg name="threshold"       default="0.3" />
+    <arg name="rate"            default="20" />
+    <arg name="hover_duration"  default="10.0" />
+    <arg name="square_size"     default="2.0" />
+    <arg name="circle_radius"   default="2.0" />
+    <arg name="circle_points"   default="12" />
+
+    <!-- ============= MAVROS (ArduPilot SITL) ============= -->
+    <include file="$(find mavros)/launch/apm.launch">
+        <arg name="fcu_url" value="$(arg fcu_url)" />
+        <arg name="gcs_url" value="$(arg gcs_url)" />
+    </include>
+
+    <!-- ============= MAVROS Control Node ============= -->
+    <node pkg="drone_mission" type="mavros_control.py" name="mavros_control_node" output="screen">
+        <param name="mission_type"    value="$(arg mission_type)" />
+        <param name="altitude"        value="$(arg altitude)" />
+        <param name="threshold"       value="$(arg threshold)" />
+        <param name="rate"            value="$(arg rate)" />
+        <param name="hover_duration"  value="$(arg hover_duration)" />
+        <param name="square_size"     value="$(arg square_size)" />
+        <param name="circle_radius"   value="$(arg circle_radius)" />
+        <param name="circle_points"   value="$(arg circle_points)" />
+    </node>
+</launch>

@@ -1,0 +1,23 @@
+<launch>
+    <!-- 
+        Square Mission Launch File
+        Menjalankan misi navigasi otonom pola persegi 2x2m 
+        menggunakan MAVROS dan distance-based waypoint.
+    -->
+
+    <!-- MAVROS node (koneksi ke ArduPilot SITL via TCP) -->
+    <include file="$(find mavros)/launch/apm.launch">
+        <!-- ArduPilot SITL: tcp://127.0.0.1:5762 (port 5760 dipakai MAVProxy) -->
+        <!-- Untuk serial: /dev/ttyACM0:57600 -->
+        <arg name="fcu_url" default="tcp://127.0.0.1:5762" />
+        <arg name="gcs_url" default="" />
+    </include>
+
+    <!-- Square Mission Node -->
+    <node pkg="drone_mission" type="square_mission.py" name="square_mission_node" output="screen">
+        <param name="square_size" value="2.0" />    <!-- Ukuran persegi (meter) -->
+        <param name="altitude"    value="2.0" />    <!-- Ketinggian terbang (meter) -->
+        <param name="threshold"   value="0.3" />    <!-- Threshold jarak (meter) -->
+        <param name="rate"        value="20"  />    <!-- Frekuensi publish (Hz) -->
+    </node>
+</launch>

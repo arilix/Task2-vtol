@@ -1,0 +1,20 @@
+<launch>
+    <!-- 
+        Square Mission C++ Launch File
+        Menjalankan MAVROS dan node square_mission_node (C++) untuk misi persegi.
+    -->
+
+    <!-- MAVROS node (koneksi ke ArduPilot SITL via TCP) -->
+    <include file="$(find mavros)/launch/apm.launch">
+        <arg name="fcu_url" default="tcp://127.0.0.1:5762" />
+        <arg name="gcs_url" default="" />
+    </include>
+
+    <!-- Square Mission Node (C++) -->
+    <node pkg="drone_mission" type="square_mission_node" name="square_mission_node" output="screen">
+        <param name="square_size" value="2.0" />
+        <param name="altitude"    value="2.0" />
+        <param name="threshold"   value="0.3" />
+        <param name="rate"        value="20"  />
+    </node>
+</launch>
