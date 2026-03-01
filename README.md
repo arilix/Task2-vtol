@@ -334,7 +334,7 @@ Koneksi FCU → Data Stream → Pose → GUIDED → ARM → Takeoff
 ```
   WP3 ←────── WP2
    │            ↑
-   │   2m × 2m │
+   │   2m × 2m  │
    ↓            │
   WP4 ──────→ WP1
   (start)
